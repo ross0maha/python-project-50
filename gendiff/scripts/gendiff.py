@@ -1,15 +1,18 @@
-#!/usr/bin/env python3
-from gendiff.cli import parse_args
+import json
 
 
-def main():
-    args = parse_args()
-    print(f">> Entry function: {main.__name__}")
-    print(f'args: {args}')
-    print(f'args.first_file: {args.first_file}')
-    print(f'args.second_file: {args.second_file}')
-    print(f'args.format: {args.format}')
-
-
-if __name__ == "__main__":
-    main()
+def generate_diff(first_file, second_file):
+    with open(first_file, 'r') as file_1, open(second_file, 'r') as file_2:
+        first_json = json.load(file_1)
+        second_json = json.load(file_2)
+        results = '{\n'
+        for key, value in sorted(first_json.items()):
+            if key in second_json and value == second_json[key]:
+                results += f"    {key}: {value}\n"
+            elif key not in second_json or value != second_json[key]:
+                results += f"  - {key}: {value}\n"
+        for key, value in sorted(second_json.items()):
+            if key not in first_json or value != first_json[key]:
+                results += f"  + {key}: {value}\n"
+        results += '}'
+    return results.lower()
