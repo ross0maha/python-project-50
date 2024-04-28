@@ -1,4 +1,4 @@
-name: Python CI
+name: main
 
 on:
   - push
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         # we want to test our package on several versions of Python
-        python-version: [3.11]
+        python-version: [3.11.0]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
@@ -28,6 +28,9 @@ jobs:
       - name: Run test-coverage
         run: |
           make test-coverage
+        name: Run tests
+        run: |
+          make test
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
