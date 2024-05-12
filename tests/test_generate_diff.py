@@ -10,6 +10,8 @@ yaml_2 = 'tests/fixtures/file2.yaml'
 
 result_1 = 'tests/fixtures/result_1.txt'
 result_2 = 'tests/fixtures/result_2.txt'
+plain_1 = 'tests/fixtures/plain_result.txt'
+plain_2 = 'tests/fixtures/plain_result_2.txt'
 
 
 def test_generate_diff_json():
@@ -29,5 +31,12 @@ def test_generate_diff_json_2():
 def test_generate_diff_yaml():
     result = open(result_1, 'r')
     diff = generate_diff(yaml_1, yaml_2)
+    assert diff == result.read()
+    result.close()
+
+
+def test_generate_diff_plain():
+    result = open(plain_1, 'r')
+    diff = generate_diff(json_3, json_4, 'plain')
     assert diff == result.read()
     result.close()

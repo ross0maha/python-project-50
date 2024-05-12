@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 
-def get_diff(old: dict, new: dict) -> OrderedDict:  # noqa
+def get_diff(old, new):  # noqa: C901
 
     res = {}
     old_keys = set(old.keys()) - set(new.keys())
@@ -17,11 +17,13 @@ def get_diff(old: dict, new: dict) -> OrderedDict:  # noqa
         new_val = new[key]
         if isinstance(old[key], dict) and isinstance(new[key], dict):
             res[key] = \
-                {'status': 'nested', 'value': get_diff(old_val, new_val)}
+                {'status': 'nested', 'value':
+                    get_diff(old_val, new_val)}
         elif old_val == new_val:
             res[key] = \
                 {'status': 'unchanged', 'value': old_val}
         elif old_val != new_val:
             res[key] = \
-                {'status': 'changed', 'old_value': old_val, 'new_value': new_val}  # noqa: E501
+                {'status': 'changed', 'old_value':
+                    old_val, 'new_value': new_val}
     return OrderedDict(sorted(res.items()))

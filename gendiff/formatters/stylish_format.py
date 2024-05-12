@@ -1,7 +1,7 @@
 from gendiff.formatters.normalize import normalize_values
 
 
-def stringify_val(data, depth: int) -> str:
+def stringify_val(data, depth):
     if not isinstance(data, dict):
         return data
     tmp = ["{"]
@@ -11,7 +11,7 @@ def stringify_val(data, depth: int) -> str:
     return ''.join(tmp)
 
 
-def stringify_diff(diff: dict, depth=1) -> str:
+def stringify_diff(diff, depth=1):
     lst = []
     STATUS = {
         'unchanged': "  ",
@@ -38,6 +38,6 @@ def stringify_diff(diff: dict, depth=1) -> str:
     return res
 
 
-def format(diff: dict) -> str:
+def format(diff):
     diff = normalize_values(diff)
     return f"{{\n{stringify_diff(diff)}}}"

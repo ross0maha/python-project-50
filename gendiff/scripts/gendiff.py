@@ -1,6 +1,7 @@
 import json
 import yaml
-from gendiff.scripts.parser import parser
+from gendiff.tree import get_diff
+from gendiff.formatters.formatting import formatting
 
 
 def load_file(file):
@@ -12,6 +13,7 @@ def load_file(file):
 
 
 def generate_diff(first_file, second_file, format='stylish'):
-    first_file_dict = load_file(first_file)
-    second_file_dict = load_file(second_file)
-    return parser(first_file_dict, second_file_dict)
+    first_dict = load_file(first_file)
+    second_dict = load_file(second_file)
+    diff = get_diff(first_dict, second_dict)
+    return formatting(diff, format)

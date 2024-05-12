@@ -3,6 +3,10 @@ import pytest
 from gendiff.cli import parse_args
 
 
+help_output = 'tests/fixtures/help_output.txt'
+cli_output = 'tests/fixtures/cli_out.txt'
+
+
 def test_parse_args():
     sys.argv = ['gendiff', '--format', 'plain', 'file1.json', 'file2.json']
     args = parse_args()
@@ -12,7 +16,7 @@ def test_parse_args():
 
 
 def test_parse_args_help(capsys):
-    with open('tests/fixtures/help_output.txt', 'r') as f:
+    with open(help_output, 'r') as f:
         help_text = f.read()
     sys.argv = ['gendiff', '-h']
     with pytest.raises(SystemExit):
@@ -22,7 +26,7 @@ def test_parse_args_help(capsys):
 
 
 def test_parse_args_empty(capsys):
-    with open('tests/fixtures/cli_out.txt', 'r') as f:
+    with open(cli_output, 'r') as f:
         cli_out = f.read()
     sys.argv = ['gendiff']
     with pytest.raises(SystemExit):
