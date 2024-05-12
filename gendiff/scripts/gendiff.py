@@ -11,7 +11,7 @@ def load_file(file):
             return yaml.safe_load(in_file)
 
 
-def generate_diff(first_file, second_file):
+def generate_diff(first_file, second_file, format='stylish'):
     first_file_dict = load_file(first_file)
     second_file_dict = load_file(second_file)
     return parser(first_file_dict, second_file_dict)
