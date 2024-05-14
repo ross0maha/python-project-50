@@ -6,8 +6,8 @@ def stringify_val(data, depth):
         return data
     tmp = ["{"]
     for k, v in data.items():
-        tmp.append(f"\n{'  '*depth}  {k}: {stringify_val(v, depth + 2)}")
-    tmp.append(f"\n{'  '*(depth - 1)}}}")
+        tmp.append(f"\n{'  ' * depth}  {k}: {stringify_val(v, depth + 2)}")
+    tmp.append(f"\n{'  ' * (depth - 1)}}}")
     return ''.join(tmp)
 
 
