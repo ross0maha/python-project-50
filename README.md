@@ -60,6 +60,11 @@ genndiff examples/file1.json examples/file2.yaml
 genndiff --help
 ```
 
-Сравнение двух JSON файлов:
+Вывод может быть произведен в следующих форматах:
 
-![](https://asciinema.org/a/TWRS5oLQdsODe7nBZCH8PZ9dZ)
+- stylish (по умолчанию)
+- plain
+- json
+
+
+[![asciicast](https://asciinema.org/a/TWRS5oLQdsODe7nBZCH8PZ9dZ.svg)](https://asciinema.org/a/TWRS5oLQdsODe7nBZCH8PZ9dZ)
