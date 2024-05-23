@@ -67,4 +67,4 @@ genndiff --help
 - json
 
 
-[![asciicast](https://asciinema.org/a/TWRS5oLQdsODe7nBZCH8PZ9dZ.svg)](https://asciinema.org/a/TWRS5oLQdsODe7nBZCH8PZ9dZ)
+![asciicast](demo.gif)
