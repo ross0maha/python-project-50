@@ -1,42 +1,33 @@
+import pytest
 from gendiff.scripts.gendiff import generate_diff
 
 
-json_1 = 'tests/fixtures/file1.json'
-json_2 = 'tests/fixtures/file2.json'
-json_3 = 'tests/fixtures/file3.json'
-json_4 = 'tests/fixtures/file4.json'
-yaml_1 = 'tests/fixtures/file1.yaml'
-yaml_2 = 'tests/fixtures/file2.yaml'
+json_1 = "tests/fixtures/file1.json"
+json_2 = "tests/fixtures/file2.json"
+json_3 = "tests/fixtures/file3.json"
+json_4 = "tests/fixtures/file4.json"
+yaml_1 = "tests/fixtures/file1.yaml"
+yaml_2 = "tests/fixtures/file2.yaml"
 
-result_1 = 'tests/fixtures/result_1.txt'
-result_2 = 'tests/fixtures/result_2.txt'
-plain_1 = 'tests/fixtures/plain_result.txt'
-plain_2 = 'tests/fixtures/plain_result_2.txt'
-
-
-def test_generate_diff_json():
-    result = open(result_1, 'r')
-    diff = generate_diff(json_1, json_2)
-    assert diff == result.read()
-    result.close()
+res_stylish_1 = "tests/fixtures/res_stylish_1.txt"
+res_stylish_2 = "tests/fixtures/res_stylish_2.txt"
+res_plain_1 = "tests/fixtures/res_plain_1.txt"
+res_plain_2 = "tests/fixtures/res_plain_2.txt"
+res_json_1 = "tests/fixtures/res_json_1.txt"
+res_json_2 = "tests/fixtures/res_json_2.txt"
 
 
-def test_generate_diff_json_2():
-    result = open(result_2, 'r')
-    diff = generate_diff(json_3, json_4)
-    assert diff == result.read()
-    result.close()
-
-
-def test_generate_diff_yaml():
-    result = open(result_1, 'r')
-    diff = generate_diff(yaml_1, yaml_2)
-    assert diff == result.read()
-    result.close()
-
-
-def test_generate_diff_plain():
-    result = open(plain_1, 'r')
-    diff = generate_diff(json_3, json_4, 'plain')
-    assert diff == result.read()
-    result.close()
+@pytest.mark.parametrize(
+    "first_file, second_file, format_name, expected_file",
+    [
+        (json_1, json_2, "stylish", res_stylish_1),
+        (json_1, json_2, "plain", res_plain_1),
+        (json_1, json_2, "json", res_json_1),
+        (json_3, json_4, "stylish", res_stylish_2),
+        (json_3, json_4, "plain", res_plain_2),
+        (json_3, json_4, "json", res_json_2),
+    ],
+)
+def test_generate_diff(first_file, second_file, format_name, expected_file):
+    with open(expected_file, "r") as expected:
+        assert generate_diff(first_file, second_file, format_name) == expected.read() # noqa
