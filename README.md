@@ -45,19 +45,19 @@ make package-install
 Запустите приложение для сравнения двух файлов:
 
 ```bash
-genndiff path/to/file1 path/to/file2
+gendiff path/to/file1 path/to/file2
 ```
 
 Пример:
 
 ```bash
-genndiff examples/file1.json examples/file2.yaml
+gendiff examples/file1.json examples/file2.yaml
 ```
 
 Для получения справки используйте флаг `-h` или `--help`:
 
 ```bash
-genndiff --help
+gendiff --help
 ```
 
 Вывод может быть произведен в следующих форматах:
