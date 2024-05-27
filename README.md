@@ -60,11 +60,17 @@ gendiff examples/file1.json examples/file2.yaml
 gendiff --help
 ```
 
+Для форматирования вывода используйте флаг `-f` `--format`
+
+```bash
+gendiff -f {stylish,plain,json}
+```
+
 Вывод может быть произведен в следующих форматах:
 
-- stylish (по умолчанию)
-- plain
-- json
+- stylish (по умолчанию): обычный формат с форматированием.
+- plain: простой текст без форматирования.
+- json: структурированный формат данных JSON.
 
 
 ![asciicast](demo.gif)
