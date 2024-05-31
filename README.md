@@ -54,12 +54,6 @@ gendiff path/to/file1 path/to/file2
 gendiff examples/file1.json examples/file2.yaml
 ```
 
-Для получения справки используйте флаг `-h` или `--help`:
-
-```bash
-gendiff --help
-```
-
 Для форматирования вывода используйте флаг `-f` `--format`
 
 ```bash
@@ -72,5 +66,12 @@ gendiff -f {stylish,plain,json}
 - plain: простой текст без форматирования.
 - json: структурированный формат данных JSON.
 
+Для получения справки используйте флаг `-h` или `--help`:
+
+```bash
+gendiff --help
+```
+
+### Демонстрация работы программы.
 
 ![asciicast](demo.gif)
