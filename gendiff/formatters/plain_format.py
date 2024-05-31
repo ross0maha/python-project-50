@@ -23,7 +23,7 @@ def gen_plain_diff(diff, keys=None):
         keys = []
     lines = []
     for k, v in diff.items():
-        status = v['status']
+        status = v['type']
         keys.append(str(k))
         path = '.'.join(keys)
         if status == 'nested':

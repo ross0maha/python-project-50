@@ -20,7 +20,7 @@ def stringify_diff(diff, depth=1):
     }
 
     for k, v in diff.items():
-        status = v['status']
+        status = v['type']
 
         if status == 'nested':
             lst.append(f"{'  ' * depth}  {k}: {{\n")
